@@ -1,0 +1,2934 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>My website </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html><head><base href="/" /><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.8/plyr.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.8/plyr.css">
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/2.0.6/wavesurfer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+:root {
+  --primary: #8e44ad;
+  --dark: #2c3e50;  
+  --light: #f8fafc;
+  --accent: #e74c3c;
+
+  --bg-color: var(--light);
+  --text-color: var(--dark);
+  --card-bg: white;
+  --navbar-bg: var(--dark);
+  --navbar-text: var(--light);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;  
+  --text-color: #ffffff;
+  --card-bg: #2d2d2d;
+  --navbar-bg: #1a1a1a;
+  --navbar-text: #ffffff;
+}
+
+.robot-illustration {
+  width: 200px;
+  height: 200px;
+  margin: 2rem auto;
+}
+
+@keyframes blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+.robot-eye {
+  animation: blink 3s infinite;
+  transform-origin: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+  background: var(--navbar-bg);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--navbar-text);
+}
+
+.logo {
+  color: var(--navbar-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--navbar-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--navbar-text);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.intro-section {
+  background: linear-gradient(135deg, var(--primary), #6c3483);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.intro-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.intro-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.statistics {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.get-started-btn {
+  background: var(--accent);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.get-started-btn:hover {
+  transform: scale(1.05);
+  background: #c0392b;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.upload-section {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.video-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-info {
+  padding: 1rem;
+}
+
+.ad-section {
+  background: linear-gradient(135deg, var(--accent), #c0392b);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.earnings-widget {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.upload-btn {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.upload-btn:hover {
+  background: #9b59b6;
+}
+
+.live-indicator {
+  background: #ef4444;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.plyr {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.youtube-upload {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.youtube-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.music-upload {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.waveform {
+  width: 100%;
+  height: 80px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.phone-cameras {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.phone-camera {
+  background: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-camera video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.payment-btn {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-btn:hover {
+  opacity: 0.9;
+}
+
+.wire-transfer {
+  background: #2ecc71;
+}
+
+.music-player {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.track-list {
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.track-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.track-item i {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.track-item i:hover {
+  transform: scale(1.1);
+}
+
+.track-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.track-item .upload-btn {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.track-item:hover .upload-btn {
+  opacity: 1;
+}
+
+.video-categories {
+  margin-bottom: 2rem;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.category-tab {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-tab.active {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.category-tab:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.category-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  z-index: 1;
+}
+
+.video-card {
+  position: relative;
+}
+
+.ai-assistant {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.ai-toggle {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.ai-modal {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 2rem;
+  width: 350px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ai-modal-content {
+  padding: 1rem;
+}
+
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.chat-input button {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.user-message {
+  background: var(--primary);
+  color: white;
+  margin-left: 2rem;
+}
+
+.ai-message {
+  background: var(--card-bg);
+  border: 1px solid var(--primary);
+  color: var(--text-color);
+  margin-right: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.policy-section {
+  background: var(--card-bg);
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.policy-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.policy-card {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.policy-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.policy-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.policy-card ul li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.policy-card ul li:before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+}
+
+.developers-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.developer-cards {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.developer-card {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  min-width: 200px;
+}
+
+.developer-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.developer-card h4 {
+  margin: 1rem 0;
+  color: var(--primary);
+}
+
+.copyright {
+  margin-top: 2rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.camera-controls {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.camera-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.camera-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+
+.camera-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.camera-status {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.stream-controls {
+  margin-top: 1rem;
+}
+
+.control-btn {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.control-btn:hover {
+  background: #9b59b6;
+}
+
+.cover-upload {
+  margin: 1rem 0;
+}
+
+.cover-preview {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color);
+}
+
+.cover-preview:hover {
+  border-color: var(--accent);
+}
+
+.cover-preview i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#signup-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+}
+
+.accessibility-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.control-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.control-button:hover {
+  transform: scale(1.1);
+}
+
+.floating-menu {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 900;
+}
+
+.floating-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 4px;
+}
+
+.floating-menu-item:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.track-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.track-item i {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.track-item i:hover {
+  transform: scale(1.1);
+}
+
+.track-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.track-item .upload-btn {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.track-item:hover .upload-btn {
+  opacity: 1;
+}
+
+.live-stream-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+}
+
+.like-button {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.like-button.active {
+  color: #e74c3c;
+}
+
+.like-button:hover {
+  transform: scale(1.1);
+}
+
+.comments-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.comment-input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-input input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.comment {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-time {
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.audio-device-item {
+  transition: all 0.3s;
+}
+
+.audio-device-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.audio-device-item button {
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.audio-device-item:hover button {
+  opacity: 1;
+}
+
+.camera-connect-modal {
+  position: fixed;  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  z-index: 1000;
+  max-width: 90%;
+  width: 300px;
+  text-align: center;
+}
+
+.camera-connect-modal h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.camera-connect-modal p {
+  margin-top: 1rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  color: var(--accent);
+}
+
+.captions-overlay {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  z-index: 10;
+}
+
+.caption-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 11;
+}
+
+.caption-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.caption-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.recording-controls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#recordingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(231, 76, 60, 0.2);
+  border-radius: 4px;
+  animation: pulse 2s infinite;
+}
+
+#recordingIndicator i {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.recording-controls .control-btn {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.recording-controls .control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.recording-controls .control-btn:nth-child(2) {
+  background: #e74c3c;
+}
+
+.live-chat-container {
+  margin-top: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: rgba(0,0,0,0.05);
+}
+
+.chat-message {
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chat-message.system {
+  background: rgba(142, 68, 173, 0.1);
+  color: var(--primary);
+}
+
+.chat-message.user {
+  background: rgba(142, 68, 173, 0.2);
+}
+
+.chat-message.other {
+  background: rgba(0,0,0,0.05);
+}
+
+.chat-username {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.chat-timestamp {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 1rem;
+  gap: 0.5rem;
+  background: var(--card-bg);
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.chat-send-btn {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.chat-send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-microphone-alt"></i>
+      LES_TALK
+    </div>
+    <div class="nav-links">
+      <a href="https://example.com/explore"><i class="fas fa-compass"></i> Explore</a>
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div id="ai-assistant" class="ai-assistant">
+    <button class="ai-toggle" onclick="toggleAI()">
+      <i class="fas fa-robot"></i> AI Assistant
+    </button>
+    
+    <div class="ai-modal" id="ai-modal">
+      <div class="ai-modal-content">
+        <div class="ai-header">
+          <h3><i class="fas fa-robot"></i> LES_TALK AI Assistant</h3>
+          <button onclick="toggleAI()" class="close-btn">&times;</button>
+        </div>
+        <div class="ai-chat">
+          <div id="chat-messages" class="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask about podcast monetization, music production, gear setup...">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <section class="intro-section">
+      <h1>Welcome to LES_TALK</h1>
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+        Your all-in-one platform for podcasting, live streaming, and content monetization. 
+        Share your voice with the world and turn your passion into profit.
+      </p>
+
+      <div class="intro-features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-microphone-alt"></i>
+          </div>
+          <h3>Multi-Format Content</h3>
+          <p>Upload podcasts, stream live, share videos, and create music content all in one place</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Multi-Camera Streaming</h3>
+          <p>Connect up to 3 phones as webcams for professional multi-angle broadcasts</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <h3>Monetization</h3>
+          <p>Earn $4 per click through our ad program with easy PayPal and wire transfer withdrawals</p>
+        </div>
+      </div>
+
+      <div class="statistics">
+        <div class="stat-item">
+          <div class="stat-number">50K+</div>
+          <div>Active Creators</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1M+</div>
+          <div>Monthly Listeners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$2M+</div>
+          <div>Creator Earnings</div>
+        </div>
+      </div>
+
+      <div class="robot-illustration">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="40" width="80" height="80" rx="10" fill="#8e44ad" />
+          <circle cx="85" cy="70" r="10" fill="#ffffff" />
+          <circle cx="115" cy="70" r="10" fill="#ffffff" />
+          <rect x="95" y="20" width="10" height="20" fill="#8e44ad" />
+          <circle cx="100" cy="15" r="8" fill="#e74c3c" />
+          <rect x="75" y="90" width="50" height="5" rx="2" fill="#ffffff" />
+          <rect x="70" y="120" width="60" height="40" rx="5" fill="#8e44ad" />
+          <rect x="40" y="130" width="30" height="10" rx="5" fill="#8e44ad" />
+          <rect x="130" y="130" width="30" height="10" rx="5" fill="#8e44ad" />
+          <rect x="80" y="160" width="10" height="30" rx="5" fill="#8e44ad" />
+          <rect x="110" y="160" width="10" height="30" rx="5" fill="#8e44ad" />
+          <circle cx="85" cy="72" r="4" fill="#000000" class="robot-eye">
+            <animate attributeName="cx" values="83;87;83" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="115" cy="72" r="4" fill="#000000" class="robot-eye">
+            <animate attributeName="cx" values="113;117;113" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="100" cy="15" r="12" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.5">
+            <animate attributeName="r" values="8;12;8" dur="1s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1s" repeatCount="indefinite" />
+          </circle>
+        </svg>
+      </div>
+
+      <button class="get-started-btn" onclick="scrollToContent()">
+        Get Started <i class="fas fa-arrow-right"></i>
+      </button>
+    </section>
+
+    <section class="upload-section">
+      <h2>Share Your Voice on LES_TALK</h2>
+      <p>Upload your podcast episodes or start streaming live to connect with your audience</p>
+      <div style="margin-top: 1rem;">
+        <button class="upload-btn" onclick="initiateUpload()">
+          <i class="fas fa-upload"></i> Upload Episode
+        </button>
+        <button class="upload-btn" style="margin-left: 1rem;" onclick="startStreaming()">
+          <i class="fas fa-video"></i> Go Live
+        </button>
+      </div>
+      <div class="youtube-upload">
+        <input type="text" id="youtube-link" placeholder="Paste YouTube link here" class="youtube-input" value="https://youtu.be/_TQxR_ONzoE?si=_nkRxCCXEVifUk__">
+        <button class="upload-btn" onclick="addYouTubeVideo()">
+          <i class="fab fa-youtube"></i> Add YouTube Video
+        </button>
+      </div>
+
+      <div class="camera-controls">
+        <div class="camera-preview-grid">
+          <div class="camera-preview" onclick="switchToCamera(1)">
+            <video id="cameraPreview1" autoplay playsinline muted></video>
+            <div class="preview-overlay">Camera 1</div>
+            <div class="camera-status">Inactive</div>
+          </div>
+          <div class="camera-preview" onclick="switchToCamera(2)">
+            <video id="cameraPreview2" autoplay playsinline muted></video>
+            <div class="preview-overlay">Camera 2</div>
+            <div class="camera-status">Inactive</div>
+          </div>
+          <div class="camera-preview" onclick="switchToCamera(3)">
+            <video id="cameraPreview3" autoplay playsinline muted></video>
+            <div class="preview-overlay">Camera 3</div>
+            <div class="camera-status">Inactive</div>
+          </div>
+        </div>
+        <div class="stream-controls">
+          <button class="control-btn" onclick="startMultiCamStream()">
+            <i class="fas fa-video"></i> Start Stream
+          </button>
+          <button class="control-btn" onclick="stopStream()">
+            <i class="fas fa-stop"></i> Stop Stream
+          </button>
+          <button class="control-btn" onclick="connectAudioDevice()">
+            <i class="fas fa-headphones"></i> Connect Audio
+          </button>
+          <button class="control-btn" onclick="switchCameraLayout()">
+            <i class="fas fa-th-large"></i> Change Layout
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="earnings-widget">
+      <h3>Creator Earnings Dashboard</h3>
+      <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+        <div>
+          <strong>Daily Earnings:</strong>
+          <span id="totalEarnings">$36.00</span>
+        </div>
+        <div>
+          <strong>Today's Clicks:</strong>
+          <span id="pendingClicks">9</span>
+        </div>
+        <div class="payment-methods">
+          <button class="payment-btn" onclick="withdrawToPaypal()">
+            <i class="fab fa-paypal"></i> PayPal
+          </button>
+          <button class="payment-btn wire-transfer" onclick="withdrawWireTransfer()">
+            <i class="fas fa-university"></i> Wire Transfer
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="upload-section">
+      <h3><i class="fas fa-mobile-alt"></i> Phone Cameras</h3>
+      <p>Connect up to 3 phones as webcams for multi-angle streaming</p>
+      <div class="phone-cameras" id="phoneCameraGrid">
+        <div class="phone-camera">
+          <video id="phoneCamera1" autoplay playsinline></video>
+        </div>
+        <div class="phone-camera">
+          <video id="phoneCamera2" autoplay playsinline></video>
+        </div>
+        <div class="phone-camera">
+          <video id="phoneCamera3" autoplay playsinline></video>
+        </div>
+      </div>
+      <button class="upload-btn" style="margin-top: 1rem;" onclick="connectPhoneCamera('phoneCamera1')">
+        <i class="fas fa-plus"></i> Connect Phone Camera
+      </button>
+    </section>
+
+    <section class="music-upload">
+      <h3><i class="fas fa-music"></i> Music Upload</h3>
+      <p>Share your music with the LES_TALK community</p>
+      
+      <div class="cover-upload">
+        <div class="cover-preview" id="coverPreview">
+          <i class="fas fa-image"></i>
+          <p>Click to upload cover art</p>
+        </div>
+        <input type="file" id="coverUpload" accept="image/*" style="display: none;">
+      </div>
+      
+      <div id="waveform" class="waveform"></div>
+      <button class="upload-btn" onclick="uploadMusic()">
+        <i class="fas fa-upload"></i> Upload Music
+      </button>
+      <div class="track-list" id="trackList">
+        <div class="track-item">
+          <i class="fas fa-play"></i>
+          <span style="margin-left: 1rem;">Track 1 - Artist Name</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-section">
+      <h3><i class="fas fa-ad"></i> Monetize Your Content</h3>
+      <p>Join our premium advertising program - Earn $4 per click daily!</p>
+      <button class="upload-btn" style="margin-top: 1rem;" onclick="createAd()">
+        Create Ad Campaign
+      </button>
+    </section>
+
+    <section class="video-categories">
+      <h2>Browse Content</h2>
+      <div class="category-tabs">
+        <button class="category-tab active" data-category="all" onclick="filterVideos('all')">All</button>
+        <button class="category-tab" data-category="podcast" onclick="filterVideos('podcast')">Podcasts</button>
+        <button class="category-tab" data-category="music" onclick="filterVideos('music')">Music</button>
+        <button class="category-tab" data-category="live" onclick="filterVideos('live')">Live Streams</button>
+        <button class="category-tab" data-category="tutorial" onclick="filterVideos('tutorial')">Tutorials</button>
+      </div>
+    </section>
+
+    <div class="video-grid">
+      <div class="video-card" data-category="tutorial">
+        <div class="category-tag">Tutorial</div>
+        <div class="plyr__video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/BvD_E1H-uXc"
+            allowfullscreen
+            allowtransparency
+            allow="autoplay"
+          ></iframe>
+        </div>
+        <div class="video-info">
+          <h3>LES_TALK Tutorial</h3>
+          <p><i class="fas fa-eye"></i> 0 views • <i class="fas fa-clock"></i> Just now</p>
+        </div>
+      </div>
+
+      <div class="video-card" data-category="music">
+        <div class="category-tag">Music</div>
+        <div class="plyr__video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/_TQxR_ONzoE"
+            allowfullscreen
+            allowtransparency
+            allow="autoplay"
+          ></iframe>
+        </div>
+        <div class="video-info">
+          <h3>LES_TALK Music Session</h3>
+          <p><i class="fas fa-eye"></i> 1.2k • <i class="fas fa-clock"></i> Just added</p>
+        </div>
+      </div>
+
+      <div class="video-card" data-category="podcast">
+        <div class="category-tag">Podcast</div>
+        <div class="plyr__video-embed">
+          <video controls crossorigin playsinline>
+            <source src="https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFxCV/high.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>LES_TALK Episode #1: Introduction</h3>
+          <p><i class="fas fa-eye"></i> 1.2k • <i class="fas fa-clock"></i> 2 hours ago</p>
+        </div>
+      </div>
+
+      <div class="video-card" data-category="live">
+        <div class="category-tag">Live</div>
+        <div class="live-stream">
+          <span class="live-indicator"><i class="fas fa-broadcast-tower"></i> LIVE</span>
+          <div class="plyr__video-embed">
+            <video controls crossorigin playsinline>
+              <source src="https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFxCV/high.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3>LES_TALK Live: Morning Show</h3>
+          <p><i class="fas fa-users"></i> 342 viewers • Started 15 minutes ago</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="policy-section">
+      <h2>LES_TALK Policies & Terms</h2>
+      
+      <div class="policy-content">
+        <div class="policy-card">
+          <h3><i class="fas fa-shield-alt"></i> Content Guidelines</h3>
+          <ul>
+            <li>All content must be original or properly licensed</li>
+            <li>No explicit or offensive material</li>
+            <li>Respect copyright and intellectual property rights</li>
+            <li>Maintain professional standards in podcasts and streams</li>
+          </ul>
+        </div>
+
+        <div class="policy-card">
+          <h3><i class="fas fa-money-bill-wave"></i> Monetization Policy</h3>
+          <ul>
+            <li>Earn $4 per verified click</li>
+            <li>Minimum withdrawal amount: $20</li>
+            <li>Payments processed within 3-5 business days</li>
+            <li>Multiple withdrawal options available (PayPal/Wire Transfer)</li>
+          </ul>
+        </div>
+
+        <div class="policy-card">
+          <h3><i class="fas fa-user-shield"></i> Privacy & Security</h3>
+          <ul>
+            <li>User data protection guaranteed</li>
+            <li>Secure payment processing</li>
+            <li>End-to-end encryption for streams</li>
+            <li>Regular security audits</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="developers-section">
+        <h3>Developed By</h3>
+        <div class="developer-cards">
+          <div class="developer-card">
+            <i class="fas fa-code"></i>
+            <h4>TUMI BBT</h4>
+            <p>Lead Developer</p>
+          </div>
+          <div class="developer-card">
+            <i class="fas fa-building"></i>
+            <h4>LESANE ENTERTAINMENT</h4>
+            <p>Platform Provider</p>
+          </div>
+        </div>
+        <p class="copyright">© 2024 LES_TALK. All rights reserved.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="accessibility-controls">
+    <button class="control-button" onclick="scrollToTop()" title="Scroll to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="control-button" onclick="toggleFloatingMenu()" title="Quick Navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="control-button" onclick="exitAllModals()" title="Close All Windows">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="floating-menu" id="floatingMenu" style="display: none;">
+    <button class="modal-close" onclick="toggleFloatingMenu()">×</button>
+    <div class="floating-menu-item" onclick="scrollToSection('intro-section')">
+      <i class="fas fa-home"></i> Home
+    </div>
+    <div class="floating-menu-item" onclick="scrollToSection('upload-section')">
+      <i class="fas fa-upload"></i> Upload
+    </div>
+    <div class="floating-menu-item" onclick="scrollToSection('video-categories')">
+      <i class="fas fa-play"></i> Videos
+    </div>
+    <div class="floating-menu-item" onclick="scrollToSection('music-upload')">
+      <i class="fas fa-music"></i> Music
+    </div>
+  </div>
+
+  <script>
+    function connectAudioDevice() {
+      // Create audio device connection modal
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-headphones"></i> Connect Audio Device</h3>
+        <div style="margin: 1rem 0;">
+          <div id="audioDeviceList" style="margin-bottom: 1rem;">
+            <p>Searching for audio devices...</p>
+          </div>
+          <button onclick="refreshAudioDevices()" class="upload-btn" style="width: 100%;">
+            <i class="fas fa-sync"></i> Refresh Devices
+          </button>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+
+      // List available audio devices
+      listAudioDevices();
+    }
+
+    // Add supporting functions for audio device handling
+    async function listAudioDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const audioDevices = devices.filter(device => device.kind === 'audioinput');
+        
+        const deviceList = document.getElementById('audioDeviceList');
+        if (deviceList) {
+          deviceList.innerHTML = audioDevices.length === 0 
+            ? '<p>No audio devices found</p>'
+            : audioDevices.map(device => `
+              <div class="audio-device-item" style="padding: 0.5rem; margin: 0.5rem 0; background: var(--bg-color); border-radius: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>${device.label || 'Unnamed Device'}</span>
+                  <button onclick="selectAudioDevice('${device.deviceId}')" class="upload-btn" style="padding: 0.25rem 0.5rem;">
+                    <i class="fas fa-plug"></i> Connect
+                  </button>
+                </div>
+              </div>
+            `).join('');
+        }
+      } catch (error) {
+        console.error('Error listing audio devices:', error);
+        const deviceList = document.getElementById('audioDeviceList');
+        if (deviceList) {
+          deviceList.innerHTML = '<p style="color: #e74c3c;">Error accessing audio devices. Please ensure you have granted microphone permissions.</p>';
+        }
+      }
+    }
+
+    async function selectAudioDevice(deviceId) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            deviceId: { exact: deviceId }
+          }
+        });
+        
+        // Store the stream for later use
+        window.currentAudioStream = stream;
+        
+        // Close the modal
+        const modal = document.querySelector('.camera-connect-modal');
+        const overlay = document.querySelector('.modal-overlay');
+        if (modal) modal.remove();
+        if (overlay) overlay.remove();
+        
+        // Show success message
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #2ecc71;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 4px;
+          animation: fadeOut 3s forwards;
+          z-index: 1000;
+        `;
+        toast.textContent = 'Audio device connected successfully!';
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      } catch (error) {
+        console.error('Error connecting to audio device:', error);
+        alert('Failed to connect to audio device. Please try again.');
+      }
+    }
+
+    function refreshAudioDevices() {
+      const deviceList = document.getElementById('audioDeviceList');
+      if (deviceList) {
+        deviceList.innerHTML = '<p>Refreshing audio devices...</p>';
+        listAudioDevices();
+      }
+    }
+
+    function initializePhoneCameraConnection() {
+      // Initialize connection state for phone cameras
+      window.connectedPhones = {
+        camera1: false,
+        camera2: false,
+        camera3: false
+      };
+
+      // Add phone camera connection handlers to the grid
+      const phoneCameraGrid = document.getElementById('phoneCameraGrid');
+      if (phoneCameraGrid) {
+        const cameras = phoneCameraGrid.querySelectorAll('.phone-camera');
+        cameras.forEach((camera, index) => {
+          const cameraId = `phoneCamera${index + 1}`;
+          const video = camera.querySelector('video');
+          
+          camera.addEventListener('click', () => connectPhoneCamera(cameraId));
+        });
+      }
+    }
+
+    function connectPhoneCamera(cameraId) {
+      // Create modal for QR code and connection instructions
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-mobile-alt"></i> Connect Phone Camera</h3>
+        <div id="qrcode-${cameraId}" style="margin: 1rem auto; width: 200px; height: 200px;"></div>
+        <p>Scan this QR code with your phone's camera to connect it as a webcam</p>
+        <div id="connection-status-${cameraId}" style="margin-top: 1rem; text-align: center;">
+          Waiting for connection...
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+
+      // Generate unique connection ID
+      const connectionId = `les-talk-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      
+      // Generate QR code with connection details
+      const qr = new QRCode(document.getElementById(`qrcode-${cameraId}`), {
+        text: JSON.stringify({
+          connectionId: connectionId,
+          cameraId: cameraId,
+          appName: 'LES_TALK'
+        }),
+        width: 200,
+        height: 200
+      });
+
+      // Simulate connection process (in real implementation, this would connect to a WebRTC signaling server)
+      setTimeout(() => {
+        const statusElement = document.getElementById(`connection-status-${cameraId}`);
+        statusElement.innerHTML = `
+          <div style="color: #2ecc71;">
+            <i class="fas fa-check-circle"></i> Phone camera connected!
+          </div>
+        `;
+        
+        // Update connection state
+        window.connectedPhones[cameraId] = true;
+        
+        // Simulate video stream (in real implementation, this would be a WebRTC stream from the phone)
+        const video = document.getElementById(cameraId);
+        if (video) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+              video.srcObject = stream;
+              video.play();
+            })
+            .catch(err => {
+              console.error('Error accessing camera:', err);
+              statusElement.innerHTML = `
+                <div style="color: #e74c3c;">
+                  <i class="fas fa-exclamation-circle"></i> Connection failed. Please try again.
+                </div>
+              `;
+            });
+        }
+        
+        // Close modal after successful connection
+        setTimeout(() => {
+          modal.remove();
+          overlay.remove();
+        }, 2000);
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set theme
+      currentTheme = 'dark';
+      document.documentElement.setAttribute('data-theme', 'dark');
+      
+      // Update theme toggle icon if it exists
+      const icon = document.querySelector('#theme-toggle i');
+      if (icon) {
+        icon.className = 'fas fa-sun';
+      }
+
+      // Initialize controls only if necessary elements exist
+      if (document.querySelector('.camera-preview')) {
+        addCameraControls();
+      }
+
+      // Initialize phone camera connection if container exists
+      if (document.getElementById('phoneCameraGrid')) {
+        initializePhoneCameraConnection();
+      }
+
+      // Add event listeners to chat inputs if they exist
+      const chatInputs = document.querySelectorAll('.chat-input input');
+      chatInputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            const button = input.nextElementSibling;
+            if (button) {
+              button.click();
+            }
+          }
+        });
+      });
+
+      // Initialize category tabs
+      const defaultCategory = 'all';
+      filterVideos(defaultCategory);
+      
+      // Add click handlers for category tabs
+      const tabs = document.querySelectorAll('.category-tab');
+      if (tabs) {
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            const category = this.getAttribute('data-category') || 'all';
+            filterVideos(category);
+          });
+        });
+      }
+    });
+
+    function addCameraControls() {
+      // Add stream controls to each camera preview with null checks
+      const cameras = [
+        document.getElementById('cameraPreview1'),
+        document.getElementById('cameraPreview2'), 
+        document.getElementById('cameraPreview3')
+      ].filter(camera => camera !== null);
+
+      cameras.forEach((camera, index) => {
+        // Only proceed if camera element exists
+        if (!camera) return;
+        
+        // Ensure camera parent element exists before accessing
+        const parentElement = camera.parentElement;
+        if (!parentElement) return;
+        
+        // Find status div within parent element
+        const statusDiv = parentElement.querySelector('.camera-status');
+        if (statusDiv) {
+          statusDiv.innerHTML = `
+            <span class="camera-status-badge">
+              <i class="fas fa-circle"></i> Camera ${index + 1}
+            </span>
+          `;
+        }
+      });
+
+      // Create recording state object if it doesn't exist
+      if (!window.recordingState) {
+        window.recordingState = {
+          mediaRecorder: null,
+          recordedChunks: [],
+          isRecording: false,
+          activeStream: null
+        };
+      }
+
+      // Add recording controls to stream controls section if it exists
+      const streamControls = document.querySelector('.stream-controls');
+      if (streamControls && !streamControls.querySelector('.recording-controls')) {
+        const recordingControls = document.createElement('div');
+        recordingControls.className = 'recording-controls';
+        recordingControls.innerHTML = `
+          <div id="recordingIndicator" style="display: none;">
+            <i class="fas fa-circle"></i> Recording
+          </div>
+          <button class="control-btn" onclick="startRecording()" title="Start Recording">
+            <i class="fas fa-record-vinyl"></i> Record
+          </button>
+          <button class="control-btn" onclick="stopRecording()" title="Stop Recording">
+            <i class="fas fa-stop-circle"></i> Stop
+          </button>
+          <button class="control-btn" onclick="downloadRecording()" title="Download Recording">
+            <i class="fas fa-download"></i> Download
+          </button>
+        `;
+        streamControls.appendChild(recordingControls);
+      }
+
+      // Add camera toggle functionality only to existing video elements
+      const videoElements = document.querySelectorAll('.camera-preview video');
+      if (videoElements && videoElements.length > 0) {
+        videoElements.forEach((video, index) => {
+          if (video) {
+            video.addEventListener('click', () => {
+              toggleCamera(index + 1);
+            });
+          }
+        });
+      }
+    }
+
+    function startRecording() {
+      const activeVideo = document.querySelector('.camera-preview video');
+      if (!activeVideo || !activeVideo.srcObject) {
+        alert('Please start a camera stream first');
+        return;
+      }
+
+      const activeStream = activeVideo.srcObject;
+      if (!activeStream) {
+        alert('No active stream found');
+        return;
+      }
+
+      window.recordingState = window.recordingState || {
+        recordedChunks: [],
+        activeStream: null,
+        mediaRecorder: null,
+        isRecording: false
+      };
+
+      window.recordingState.recordedChunks = [];
+      window.recordingState.activeStream = activeStream;
+      
+      try {
+        const mediaRecorder = new MediaRecorder(activeStream);
+        window.recordingState.mediaRecorder = mediaRecorder;
+        
+        mediaRecorder.ondataavailable = (event) => {
+          if (event.data && event.data.size > 0) {
+            window.recordingState.recordedChunks.push(event.data);
+          }
+        };
+        
+        mediaRecorder.start();
+        window.recordingState.isRecording = true;
+        
+        // Show recording indicator
+        const indicator = document.getElementById('recordingIndicator');
+        if (indicator) {
+          indicator.style.display = 'flex';
+        }
+      } catch (error) {
+        console.error('Error starting recording:', error);
+        alert('Failed to start recording. Please ensure camera access is granted.');
+      }
+    }
+
+    function downloadRecording() {
+      if (!window.recordingState || !window.recordingState.recordedChunks.length) {
+        alert('No recording available to download');
+        return;
+      }
+
+      try {
+        // Create blob from recorded chunks
+        const blob = new Blob(window.recordingState.recordedChunks, {
+          type: window.recordingState.recordedChunks[0].type
+        });
+
+        // Create download link
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `les-talk-recording-${new Date().toISOString()}.webm`;
+        
+        // Trigger download
+        a.click();
+        
+        // Cleanup
+        setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        }, 100);
+
+        // Show success message
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #2ecc71;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 4px;
+          animation: fadeOut 3s forwards;
+          z-index: 1000;
+        `;
+        toast.textContent = 'Recording downloaded successfully!';
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 3000);
+
+      } catch (error) {
+        console.error('Error downloading recording:', error);
+        alert('Failed to download recording. Please try again.');
+      }
+    }
+
+    function stopRecording() {
+      if (!window.recordingState || !window.recordingState.mediaRecorder) {
+        alert('No active recording to stop');
+        return;
+      }
+
+      try {
+        window.recordingState.mediaRecorder.stop();
+        window.recordingState.isRecording = false;
+
+        // Hide recording indicator
+        const indicator = document.getElementById('recordingIndicator');
+        if (indicator) {
+          indicator.style.display = 'none';
+        }
+
+        // Show success message
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #2ecc71;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 4px;
+          animation: fadeOut 3s forwards;
+          z-index: 1000;
+        `;
+        toast.textContent = 'Recording stopped! Click download to save.';
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 3000);
+
+      } catch (error) {
+        console.error('Error stopping recording:', error);
+        alert('Failed to stop recording. Please try again.');
+      }
+    }
+
+    function initiateUpload() {
+      // Create a file input element
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'audio/*,video/*';
+      fileInput.style.display = 'none';
+
+      // Create modal for upload
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-upload"></i> Upload Content</h3>
+        <div style="margin: 1rem 0;">
+          <div id="uploadProgress" style="display: none;">
+            <div style="width: 100%; height: 4px; background: #eee; border-radius: 2px; margin: 1rem 0;">
+              <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); border-radius: 2px; transition: width 0.3s;"></div>
+            </div>
+            <p id="uploadStatus">Preparing upload...</p>
+          </div>
+          <button id="selectFileBtn" onclick="document.getElementById('fileInput').click();" class="upload-btn" style="width: 100%; margin-bottom: 1rem;">
+            <i class="fas fa-file-upload"></i> Select File
+          </button>
+          <input type="text" id="contentTitle" placeholder="Enter title" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <textarea id="contentDescription" placeholder="Enter description" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px; min-height: 100px;"></textarea>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      // Add file input to document
+      fileInput.id = 'fileInput';
+      document.body.appendChild(fileInput);
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+
+      // Handle file selection
+      fileInput.onchange = async function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBar = document.getElementById('progressBar');
+        const uploadStatus = document.getElementById('uploadStatus');
+        const selectFileBtn = document.getElementById('selectFileBtn');
+
+        uploadProgress.style.display = 'block';
+        selectFileBtn.disabled = true;
+
+        try {
+          // Show file details
+          uploadStatus.textContent = `Preparing to upload: ${file.name}`;
+          
+          // Simulate upload progress
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 5;
+            if (progress <= 90) {
+              progressBar.style.width = `${progress}%`;
+              uploadStatus.textContent = `Uploading: ${progress}%`;
+            }
+          }, 200);
+
+          // Simulate file upload
+          await new Promise(resolve => setTimeout(resolve, 4000));
+
+          // Complete upload
+          clearInterval(interval);
+          progressBar.style.width = '100%';
+          uploadStatus.textContent = 'Upload complete!';
+          
+          // Show success message
+          setTimeout(() => {
+            modal.remove();
+            overlay.remove();
+            fileInput.remove();
+            
+            // Show success toast
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background: #2ecc71;
+              color: white;
+              padding: 1rem 2rem;
+              border-radius: 4px;
+              animation: fadeOut 3s forwards;
+              z-index: 1000;
+            `;
+            toast.textContent = 'File uploaded successfully!';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+          }, 1000);
+
+        } catch (error) {
+          console.error('Upload error:', error);
+          uploadStatus.textContent = 'Upload failed. Please try again.';
+          uploadStatus.style.color = '#e74c3c';
+          selectFileBtn.disabled = false;
+        }
+      };
+    }
+
+    function startStreaming() {
+      // Create modal for stream setup
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-video"></i> Start Streaming</h3>
+        <div style="margin: 1rem 0;">
+          <div id="streamSetup">
+            <input type="text" 
+                   id="streamTitle" 
+                   placeholder="Enter stream title" 
+                   style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+            <select id="streamQuality" 
+                    style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+              <option value="720p">720p</option>
+              <option value="1080p">1080p</option>
+              <option value="480p">480p</option>
+            </select>
+            <div id="streamStatus" style="margin: 1rem 0;"></div>
+            <button onclick="beginLiveStream()" class="upload-btn" style="width: 100%;">
+              <i class="fas fa-play"></i> Start Stream
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+    }
+
+    // Add supporting function for starting the actual stream
+    async function beginLiveStream() {
+      const streamTitle = document.getElementById('streamTitle').value;
+      const streamQuality = document.getElementById('streamQuality').value;
+      const statusDiv = document.getElementById('streamStatus');
+
+      if (!streamTitle.trim()) {
+        statusDiv.innerHTML = `<p style="color: #e74c3c;">Please enter a stream title</p>`;
+        return;
+      }
+
+      statusDiv.innerHTML = `<p>Initializing stream...</p>`;
+
+      try {
+        // Request camera and microphone access
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            width: streamQuality === '1080p' ? 1920 : streamQuality === '720p' ? 1280 : 854,
+            height: streamQuality === '1080p' ? 1080 : streamQuality === '720p' ? 720 : 480
+          },
+          audio: true
+        });
+
+        // Success handling
+        statusDiv.innerHTML = `
+          <p style="color: #2ecc71;"><i class="fas fa-check-circle"></i> Stream started successfully!</p>
+          <p>Title: ${streamTitle}</p>
+          <p>Quality: ${streamQuality}</p>
+        `;
+
+        // Create live indicator
+        const liveIndicator = document.createElement('div');
+        liveIndicator.className = 'live-indicator';
+        liveIndicator.innerHTML = `<i class="fas fa-broadcast-tower"></i> LIVE`;
+        document.querySelector('.upload-section').appendChild(liveIndicator);
+
+        // Close modal after delay
+        setTimeout(() => {
+          const modal = document.querySelector('.camera-connect-modal');
+          const overlay = document.querySelector('.modal-overlay');
+          if (modal) modal.remove();
+          if (overlay) overlay.remove();
+
+          // Show success toast
+          const toast = document.createElement('div');
+          toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            animation: fadeOut 3s forwards;
+            z-index: 1000;
+          `;
+          toast.textContent = 'Live stream started successfully!';
+          document.body.appendChild(toast);
+          
+          setTimeout(() => toast.remove(), 3000);
+        }, 2000);
+
+      } catch (error) {
+        console.error('Error starting stream:', error);
+        statusDiv.innerHTML = `
+          <p style="color: #e74c3c;">
+            <i class="fas fa-exclamation-circle"></i> 
+            Failed to start stream. Please ensure camera and microphone access is granted.
+          </p>
+        `;
+      }
+    }
+
+    function startMultiCamStream() {
+      const streamControls = document.querySelector('.stream-controls');
+      const cameras = document.querySelectorAll('.camera-preview video');
+      
+      // First ensure we have at least one camera stream
+      let activeStreams = Array.from(cameras).filter(camera => camera.srcObject);
+      
+      if (activeStreams.length === 0) {
+        alert('Please connect at least one camera before starting the stream');
+        return;
+      }
+
+      try {
+        // Create container for streams if not exists
+        let streamContainer = document.querySelector('.active-streams-container');
+        if (!streamContainer) {
+          streamContainer = document.createElement('div');
+          streamContainer.className = 'active-streams-container';
+          streamContainer.style.cssText = `
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+          `;
+          streamControls.parentNode.insertBefore(streamContainer, streamControls);
+        }
+
+        // Add live indicator
+        const liveIndicator = document.createElement('div');
+        liveIndicator.className = 'live-indicator';
+        liveIndicator.innerHTML = `<i class="fas fa-broadcast-tower"></i> LIVE`;
+        streamContainer.appendChild(liveIndicator);
+
+        // Clone and display active streams
+        activeStreams.forEach((camera, index) => {
+          const streamWrapper = document.createElement('div');
+          streamWrapper.className = 'stream-wrapper';
+          streamWrapper.style.cssText = `
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+          `;
+
+          const streamVideo = document.createElement('video');
+          streamVideo.autoplay = true;
+          streamVideo.playsinline = true;
+          streamVideo.muted = true;
+          streamVideo.srcObject = camera.srcObject;
+          streamVideo.style.width = '100%';
+          
+          const streamLabel = document.createElement('div');
+          streamLabel.className = 'stream-label';
+          streamLabel.textContent = `Camera ${index + 1}`;
+          streamLabel.style.cssText = `
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+          `;
+
+          streamWrapper.appendChild(streamVideo);
+          streamWrapper.appendChild(streamLabel);
+          streamContainer.appendChild(streamWrapper);
+        });
+
+        // Show success message
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #2ecc71;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 4px;
+          animation: fadeOut 3s forwards;
+          z-index: 1000;
+        `;
+        toast.textContent = 'Multi-camera stream started successfully!';
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 3000);
+
+      } catch (error) {
+        console.error('Error starting multi-camera stream:', error);
+        alert('Failed to start multi-camera stream. Please try again.');
+      }
+    }
+
+    // Supporting function to stop the stream
+    function stopStream() {
+      // Remove stream container if exists
+      const streamContainer = document.querySelector('.active-streams-container');
+      if (streamContainer) {
+        streamContainer.remove();
+      }
+
+      // Remove live indicator
+      const liveIndicator = document.querySelector('.live-indicator');
+      if (liveIndicator) {
+        liveIndicator.remove();
+      }
+
+      // Stop all video streams
+      const cameras = document.querySelectorAll('.camera-preview video');
+      cameras.forEach(camera => {
+        if (camera.srcObject) {
+          const tracks = camera.srcObject.getTracks();
+          tracks.forEach(track => track.stop());
+          camera.srcObject = null;
+        }
+      });
+
+      // Reset camera status indicators
+      const statusDivs = document.querySelectorAll('.camera-status');
+      statusDivs.forEach(status => {
+        status.textContent = 'Inactive';
+      });
+
+      // Show stopped message
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #e74c3c;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        animation: fadeOut 3s forwards;
+        z-index: 1000;
+      `;
+      toast.textContent = 'Stream stopped';
+      document.body.appendChild(toast);
+      
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Supporting function to switch camera layout
+    function switchCameraLayout() {
+      const streamContainer = document.querySelector('.active-streams-container');
+      if (!streamContainer) return;
+      
+      // Toggle between different layouts
+      const currentLayout = streamContainer.dataset.layout || 'grid';
+      const layouts = {
+        grid: 'vertical',
+        vertical: 'horizontal',
+        horizontal: 'grid'
+      };
+      
+      const newLayout = layouts[currentLayout];
+      streamContainer.dataset.layout = newLayout;
+      
+      switch(newLayout) {
+        case 'grid':
+          streamContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+          break;
+        case 'vertical':
+          streamContainer.style.gridTemplateColumns = '1fr';
+          break;
+        case 'horizontal':
+          streamContainer.style.gridTemplateColumns = `repeat(${streamContainer.children.length}, 1fr)`;
+          break;
+      }
+    }
+
+    function withdrawToPaypal() {
+      const earnings = document.getElementById('totalEarnings').textContent;
+      
+      // Create modal for PayPal withdrawal
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fab fa-paypal"></i> PayPal Withdrawal</h3>
+        <div style="margin: 1rem 0;">
+          <p>Current Balance: ${earnings}</p>
+          <div id="withdrawalStatus" style="margin: 1rem 0;"></div>
+          <input type="email" 
+                 id="paypalEmail" 
+                 placeholder="Enter PayPal email" 
+                 style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <button onclick="processPaypalWithdrawal()" class="upload-btn" style="width: 100%;">
+            <i class="fab fa-paypal"></i> Withdraw to PayPal
+          </button>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+    }
+
+    function processPaypalWithdrawal() {
+      const email = document.getElementById('paypalEmail').value;
+      const statusDiv = document.getElementById('withdrawalStatus');
+
+      if (!email || !email.includes('@')) {
+        statusDiv.innerHTML = `<p style="color: #e74c3c;">Please enter a valid PayPal email</p>`;
+        return;
+      }
+
+      statusDiv.innerHTML = `<p>Processing withdrawal...</p>`;
+
+      // Simulate withdrawal process
+      setTimeout(() => {
+        statusDiv.innerHTML = `<p style="color: #2ecc71;"><i class="fas fa-check-circle"></i> Withdrawal successful!</p>`;
+        
+        // Close modal after success
+        setTimeout(() => {
+          const modal = document.querySelector('.camera-connect-modal');
+          const overlay = document.querySelector('.modal-overlay');
+          if (modal) modal.remove();
+          if (overlay) overlay.remove();
+
+          // Show success toast
+          const toast = document.createElement('div');
+          toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            animation: fadeOut 3s forwards;
+            z-index: 1000;
+          `;
+          toast.textContent = 'Withdrawal processed successfully! Funds will arrive in 3-5 business days.';
+          document.body.appendChild(toast);
+          
+          setTimeout(() => toast.remove(), 3000);
+        }, 1500);
+      }, 2000);
+    }
+
+    function withdrawWireTransfer() {
+      // Create modal for wire transfer
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-university"></i> Wire Transfer</h3>
+        <div style="margin: 1rem 0;">
+          <p>Current Balance: ${document.getElementById('totalEarnings').textContent}</p>
+          <div id="wireTransferStatus" style="margin: 1rem 0;"></div>
+          <input type="text" 
+                 id="bankName" 
+                 placeholder="Bank Name" 
+                 style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <input type="text" 
+                 id="accountNumber" 
+                 placeholder="Account Number" 
+                 style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <input type="text" 
+                 id="routingNumber" 
+                 placeholder="Routing Number" 
+                 style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <button onclick="processWireTransfer()" class="upload-btn" style="width: 100%;">
+            <i class="fas fa-university"></i> Process Wire Transfer
+          </button>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+    }
+
+    function processWireTransfer() {
+      const bankName = document.getElementById('bankName').value;
+      const accountNumber = document.getElementById('accountNumber').value;
+      const routingNumber = document.getElementById('routingNumber').value;
+      const statusDiv = document.getElementById('wireTransferStatus');
+
+      if (!bankName || !accountNumber || !routingNumber) {
+        statusDiv.innerHTML = `<p style="color: #e74c3c;">Please fill in all fields</p>`;
+        return;
+      }
+
+      statusDiv.innerHTML = `<p>Processing wire transfer...</p>`;
+
+      setTimeout(() => {
+        statusDiv.innerHTML = `<p style="color: #2ecc71;"><i class="fas fa-check-circle"></i> Wire transfer initiated!</p>`;
+        
+        setTimeout(() => {
+          const modal = document.querySelector('.camera-connect-modal');
+          const overlay = document.querySelector('.modal-overlay');
+          if (modal) modal.remove();
+          if (overlay) overlay.remove();
+
+          const toast = document.createElement('div');
+          toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            animation: fadeOut 3s forwards;
+            z-index: 1000;
+          `;
+          toast.textContent = 'Wire transfer initiated! Funds will arrive in 3-5 business days.';
+          document.body.appendChild(toast);
+          
+          setTimeout(() => toast.remove(), 3000);
+        }, 1500);
+      }, 2000);
+    }
+
+    function uploadMusic() {
+      // Create modal for music upload
+      const modal = document.createElement('div');
+      modal.className = 'camera-connect-modal';
+      modal.innerHTML = `
+        <button class="modal-close" onclick="this.closest('.camera-connect-modal').remove(); document.querySelector('.modal-overlay').remove();">&times;</button>
+        <h3><i class="fas fa-music"></i> Upload Music</h3>
+        <div style="margin: 1rem 0;">
+          <div id="musicUploadProgress" style="display: none;">
+            <div style="width: 100%; height: 4px; background: #eee; border-radius: 2px; margin: 1rem 0;">
+              <div id="musicProgressBar" style="width: 0%; height: 100%; background: var(--primary); border-radius: 2px; transition: width 0.3s;"></div>
+            </div>
+            <p id="musicUploadStatus">Preparing upload...</p>
+          </div>
+          <button id="selectMusicBtn" onclick="document.getElementById('musicFileInput').click();" class="upload-btn" style="width: 100%; margin-bottom: 1rem;">
+            <i class="fas fa-file-audio"></i> Select Music File
+          </button>
+          <input type="text" id="trackTitle" placeholder="Track Title" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <input type="text" id="artistName" placeholder="Artist Name" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+          <select id="genre" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+            <option value="">Select Genre</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="hip-hop">Hip Hop</option>
+            <option value="electronic">Electronic</option>
+            <option value="jazz">Jazz</option>
+            <option value="classical">Classical</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      `;
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+
+      // Create file input
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.id = 'musicFileInput';
+      fileInput.accept = 'audio/*';
+      fileInput.style.display = 'none';
+
+      // Add elements to document
+      document.body.appendChild(fileInput);
+      document.body.appendChild(overlay);
+      document.body.appendChild(modal);
+
+      // Handle file selection
+      fileInput.onchange = async function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const uploadProgress = document.getElementById('musicUploadProgress');
+        const progressBar = document.getElementById('musicProgressBar');
+        const uploadStatus = document.getElementById('musicUploadStatus');
+        const selectFileBtn = document.getElementById('selectMusicBtn');
+        const trackTitle = document.getElementById('trackTitle').value.trim();
+        const artistName = document.getElementById('artistName').value.trim();
+        const genre = document.getElementById('genre').value;
+
+        if (!trackTitle || !artistName || !genre) {
+          alert('Please fill in all fields');
+          return;
+        }
+
+        uploadProgress.style.display = 'block';
+        selectFileBtn.disabled = true;
+
+        try {
+          // Show file details
+          uploadStatus.textContent = `Preparing to upload: ${file.name}`;
+          
+          // Simulate upload progress
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 5;
+            if (progress <= 90) {
+              progressBar.style.width = `${progress}%`;
+              uploadStatus.textContent = `Uploading: ${progress}%`;
+            }
+          }, 200);
+
+          // Simulate file upload
+          await new Promise(resolve => setTimeout(resolve, 4000));
+
+          // Complete upload
+          clearInterval(interval);
+          progressBar.style.width = '100%';
+          uploadStatus.textContent = 'Upload complete!';
+          
+          // Add track to track list
+          const trackList = document.getElementById('trackList');
+          const newTrack = document.createElement('div');
+          newTrack.className = 'track-item';
+          newTrack.innerHTML = `
+            <i class="fas fa-play"></i>
+            <span style="margin-left: 1rem;">${trackTitle} - ${artistName}</span>
+            <div class="track-controls">
+              <button class="upload-btn">
+                <i class="fas fa-share"></i> Share
+              </button>
+            </div>
+          `;
+          trackList.insertBefore(newTrack, trackList.firstChild);
+
+          // Close modal after delay
+          setTimeout(() => {
+            modal.remove();
+            overlay.remove();
+            fileInput.remove();
+            
+            // Show success toast
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background: #2ecc71;
+              color: white;
+              padding: 1rem 2rem;
+              border-radius: 4px;
+              animation: fadeOut 3s forwards;
+              z-index: 1000;
+            `;
+            toast.textContent = 'Music uploaded successfully!';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+          }, 1000);
+
+        } catch (error) {
+          console.error('Upload error:', error);
+          uploadStatus.textContent = 'Upload failed. Please try again.';
+          uploadStatus.style.color = '#e74c3c';
+          selectFileBtn.disabled = false;
+        }
+      };
+    }
+    
+    function filterVideos(category) {
+      // Get video cards with null check
+      const videoCards = document.querySelectorAll('.video-card');
+      if (!videoCards || videoCards.length === 0) {
+        console.warn('No video cards found');
+        return;
+      }
+
+      // Get category tabs with null check 
+      const tabs = document.querySelectorAll('.category-tab');
+      if (!tabs || tabs.length === 0) {
+        console.warn('No category tabs found'); 
+        return;
+      }
+
+      // Remove active class from all tabs
+      tabs.forEach(tab => {
+        if (tab && tab.classList) {
+          tab.classList.remove('active');
+        }
+      });
+
+      // Add active class to selected tab
+      const selectedTab = Array.from(tabs).find(tab => {
+        const onclickAttr = tab.getAttribute('onclick');
+        return onclickAttr && onclickAttr.includes(category);
+      });
+      
+      if (selectedTab && selectedTab.classList) {
+        selectedTab.classList.add('active');
+      }
+
+      // Show/hide videos based on category
+      videoCards.forEach(card => {
+        if (!card) return;
+        
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Add helper function to safely get elements
+    function getElement(selector) {
+      const element = document.querySelector(selector);
+      if (!element) {
+        console.warn(`Element not found: ${selector}`);
+        return null;
+      }
+      return element;
+    }
+
+    // Update toggleAI function with null checks
+    function toggleAI() {
+      const modal = getElement('#ai-modal');
+      if (!modal) return;
+      
+      modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Update sendMessage function with null checks
+    function sendMessage() {
+      const input = getElement('#user-input');
+      const messages = getElement('#chat-messages');
+      if (!input || !messages) return;
+
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Add user message
+      messages.innerHTML += `
+        <div class="message user-message">
+          ${message}
+        </div>
+      `;
+
+      // Clear input
+      input.value = '';
+
+      // Simulate AI response
+      setTimeout(() => {
+        if (messages) {
+          messages.innerHTML += `
+            <div class="message ai-message">
+              I am LES_TALK AI Assistant. How can I help you with podcasting?
+            </div>
+          `;
+          messages.scrollTop = messages.scrollHeight;
+        }
+      }, 1000);
+    }
+
+    // Update scrollToContent function with null checks
+    function scrollToContent() {
+      const uploadSection = getElement('.upload-section');
+      if (!uploadSection) return;
+      
+      uploadSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Update toggleFloatingMenu function with null checks
+    function toggleFloatingMenu() {
+      const menu = getElement('#floatingMenu');
+      if (!menu) return;
+      
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Update scrollToSection function with null checks
+    function scrollToSection(sectionClass) {
+      if (!sectionClass) return;
+      
+      const section = getElement('.' + sectionClass);
+      if (!section) return;
+      
+      section.scrollIntoView({ behavior: 'smooth' });
+      toggleFloatingMenu();
+    }
+
+    // Update exitAllModals function with null checks
+    function exitAllModals() {
+      const modals = document.querySelectorAll('.camera-connect-modal, .modal-overlay');
+      if (!modals || modals.length === 0) return;
+      
+      modals.forEach(modal => {
+        if (modal && modal.remove) {
+          modal.remove();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
